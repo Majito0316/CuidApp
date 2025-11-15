@@ -1,0 +1,153 @@
+/* ===== RESETEO ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #dfe7e9; /* gris claro */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ===== ENCABEZADO ===== */
+header {
+    background-color: #e0f4f7; /* azul claro */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+header .fondo-logo {
+    position: absolute;
+    top: -15px;
+    left: -10px;
+    opacity: 0.35;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #000;
+    z-index: 1;
+    position: relative;
+}
+
+header .icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header .icons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+header .icons img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* ===== CUERPO PRINCIPAL ===== */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 140px);
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #d0d0d0;
+    border-radius: 12px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #000;
+    font-weight: 600;
+}
+
+/* ===== BARRA INFERIOR ===== */
+footer {
+    background-color: #e0f4f7;
+    padding: 8px 0;
+    border-top: 1px solid #ccc;
+}
+
+footer nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+footer img {
+    object-fit: contain;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .card img {
+        width: 70px;
+        height: 70px;
+    }
+
+    footer img {
+        width: 30px;
+    }
+}
+
+

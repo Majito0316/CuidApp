@@ -1,0 +1,331 @@
+/* Reinicio general: elimina márgenes y ajusta el modelo de caja */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cuerpo principal: ocupa toda la pantalla y centra el contenido */
+body {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor del contenido */
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+/* Título principal */
+.logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+/* Corazón con línea cardiaca */
+.heart {
+    width: 200px;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    animation: pulse 1.5s infinite;
+}
+
+/* Animación del corazón */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Texto descriptivo */
+.description {
+    font-size: 1rem;
+    color: #333333;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    padding: 0 10px;
+}
+
+/* Botón principal */
+.btn {
+    display: inline-block;
+    background-color: #2ca6a4;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.9rem 2.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(44, 166, 164, 0.3);
+}
+
+/* Efecto hover del botón */
+.btn:hover {
+    background-color: #238a88;
+    box-shadow: 0 6px 14px rgba(35, 138, 136, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Responsividad: pantallas pequeñas */
+@media (max-width: 600px) {
+    .logo {
+        font-size: 2rem;
+    }
+
+    .heart {
+        width: 150px;
+    }
+
+    .description {
+        font-size: 0.95rem;
+    }
+
+    .btn {
+        padding: 0.8rem 2rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* ==== LOGIN / REGISTRO ==== */
+.auth-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 40px auto;
+  background-color: #eaf7f7;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.auth-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.auth-tabs button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.auth-tabs button.active {
+  color: #0097a7;
+  border-bottom: 3px solid #0097a7;
+}
+
+.auth-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.auth-form {
+  display: none;
+  flex-direction: column;
+}
+
+.auth-form.active {
+  display: flex;
+}
+
+.auth-form label {
+  font-weight: bold;
+  margin: 8px 0 4px;
+}
+
+.auth-form input,
+.auth-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.checkbox label {
+  font-size: 14px;
+  margin-left: 5px;
+  color: #444;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #0097a7;
+  border: none;
+  color: white;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: #007f8c;
+}
+
+@media (max-width: 600px) {
+  .auth-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .auth-tabs button {
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 16px;
+  }
+}
+
+.auth-logo img {
+  display: block;
+  margin: 0 auto;
+  background: transparent; /* evita fondo blanco */
+  mix-blend-mode: multiply; /* ayuda a integrar el color */
+}
+
+.field-error { color:#c0392b; font-size:.9rem; margin:.25rem 0 .5rem }
+input.invalid { border-color:#c0392b; outline-color:#c0392b }
+@keyframes shake { 10%,90%{transform:translateX(-1px)} 20%,80%{transform:translateX(2px)}
+30%,50%,70%{transform:translateX(-4px)} 40%,60%{transform:translateX(4px)} }
+.shake { animation:shake .3s linear 1 }
+.chart-box{
+  height: 220px;           /* << controla la altura del gráfico */
+  position: relative;      /* necesario para Chart.js */
+}
+.chart-box canvas{
+  width: 100% !important;
+  height: 100% !important; /* hace que el canvas use la altura de .chart-box */
+  display: block;
+}
+
+/* TARJETA QUE CONTIENE LOS KPIs */
+.card.kpi-card{ padding: 14px; }
+
+/* GRID DE KPIs */
+.kpis{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 10px;
+}
+
+/* CAJITA INDIVIDUAL */
+.kpi{
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 8px;
+  text-align: center;
+  box-shadow: 0 1px 0 rgba(0,0,0,.02);
+  min-height: 68px;              /* evita que se “aplane” */
+  display: grid; gap: 4px;       /* título y número */
+  align-content: center;
+}
+.kpi .n{
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1;
+}
+.kpi .label{ color: var(--muted); font-size: 12px; }
+
+
+
+/* --- ACCIONES: Filtrar | CSV | PDF en una sola fila --- */
+.filters-bar .actions{
+  grid-column: 1 / -1;
+  display: flex !important;
+  gap: 10px;
+  align-items: stretch;
+  margin-top: 4px;
+}
+.filters-bar .actions .btn,
+.filters-bar .actions .btn-link{
+  flex: 1 1 0;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  white-space: nowrap;
+}
+
+/* Asegura que el botón verde no ocupe todo el ancho solo */
+.filters-bar .actions .btn{
+  width: auto;               /* evita width:100% heredado */
+  padding: 0 14px;
+}
+
+/* En móviles estrechos, apilar 3 botones en columna */
+@media (max-width: 420px){
+  .filters-bar{ grid-template-columns: 1fr; }
+  .filters-bar .actions{ flex-direction: column; }
+}
+
+/* Barra superior (Volver / Actualizar) */
+.toolbar{
+  display:flex !important;
+  align-items:center; gap:8px;
+  padding:10px 12px;
+}
+
+/* Form de filtros + acciones en una fila */
+.filters-bar{
+  display:grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap:8px;
+  padding:0 12px 12px;
+}
+.filters-bar .row{ display:flex; flex-direction:column; gap:6px; }
+.filters-bar input{
+  padding:10px 12px; border:1px solid var(--border);
+  border-radius:10px; background:#fff;
+}
+
+/* Acciones: Filtrar | CSV | PDF */
+.filters-bar .actions{
+  grid-column:1 / -1;
+  display:flex !important; gap:10px; align-items:stretch; margin-top:4px;
+}
+.filters-bar .actions .btn,
+.filters-bar .actions .btn-link{
+  flex:1 1 0;
+  height:44px; border-radius:12px; display:grid; place-items:center;
+  white-space:nowrap;
+}
+/* Asegura que el botón verde no se estire a 100% */
+.filters-bar .actions .btn{ width:auto; padding:0 14px; }
+
+@media (max-width:420px){
+  .filters-bar{ grid-template-columns:1fr; }
+  .filters-bar .actions{ flex-direction:column; }
+}

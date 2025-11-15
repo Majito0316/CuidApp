@@ -1,0 +1,244 @@
+/* =========================
+   CuidApp — Ajustes (ajustes.css)
+   ========================= */
+
+/* --------- Variables base --------- */
+:root{
+  --primary: #05a4a4;
+  --primary-700:#048585;
+  --bg: #e8f2f2;
+  --surface:#f5f7f8;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --ring:#06b6d4;
+  --shadow: 0 6px 18px rgba(15,23,42,.08);
+  --radius: 18px;
+
+  --font-size: 16px;          /* normal */
+  --line-height: 1.45;
+}
+
+/* Tamaño de fuente preferido (servidor puede setear data-font="grande") */
+html[data-font="grande"]{
+  --font-size: 18px;
+  --line-height: 1.55;
+}
+
+/* Alto contraste opcional (html[data-contrast="1"]) */
+html[data-contrast="1"]{
+  --border:#64748b;
+  --muted:#0f172a;
+}
+
+/* Tema oscuro: setear html[data-theme="oscuro"] en el servidor */
+html[data-theme="oscuro"]{
+  --bg:#0b1220;
+  --surface:#0f172a;
+  --card:#111827;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --border:#283548;
+  --shadow: 0 6px 20px rgba(0,0,0,.35);
+}
+
+/* “Seguir sistema”: si usas data-theme="sistema" o no pones nada */
+@media (prefers-color-scheme: dark){
+  html[data-theme="sistema"] {
+    --bg:#0b1220;
+    --surface:#0f172a;
+    --card:#111827;
+    --text:#e5e7eb;
+    --muted:#94a3b8;
+    --border:#283548;
+    --shadow: 0 6px 20px rgba(0,0,0,.35);
+  }
+}
+
+/* --------- Reset mínimo --------- */
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Estado de foco accesible */
+:focus-visible{
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* --------- Layout contenedor tipo “móvil” --------- */
+.shell{
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 100svh;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+}
+
+/* --------- Header --------- */
+.header{
+  background: linear-gradient(#e6f6f6,#dff1f1);
+  padding: 24px 18px;
+  text-align: center;
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+html[data-theme="oscuro"] .header,
+html[data-theme="sistema"] .header{
+  /* sutil para dark */
+  background: linear-gradient(#0f3c3c, #0d2f2f);
+}
+.header h1{
+  margin: 8px 0 4px;
+  font-size: 28px;
+  font-weight: 800;
+}
+.header p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* --------- Secciones y tarjetas --------- */
+.section{ padding: 16px; }
+
+.block{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.02);
+}
+
+/* Lista de “links” de la pantalla principal */
+.list a{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 10px;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.list a:hover{
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  border-color: #d1d5db;
+}
+
+/* --------- Formularios --------- */
+.row{ display:flex; flex-direction:column; gap:6px; margin-bottom:10px; }
+label{ font-weight: 600; }
+
+input, select, textarea{
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+textarea{ min-height: 90px; resize: vertical; }
+
+input[type="file"]{
+  padding: 8px 10px;
+  background: transparent;
+  border: 1px dashed var(--border);
+}
+
+/* Botón principal */
+.btn{
+  appearance: none;
+  border: 0;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  transition: filter .12s ease, transform .05s ease;
+}
+.btn:hover{ filter: brightness(.95); }
+.btn:active{ transform: translateY(1px); }
+
+/* Mensajería */
+.msg{
+  margin: 12px 18px 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+.ok{
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+.err{
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+/* --------- Utilidades --------- */
+.muted{ color: var(--muted); }
+.hr{ border: none; border-top: 1px solid var(--border); margin: 8px 0; }
+
+.avatar{
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+/* --------- Footer / Tab bar --------- */
+footer nav{
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0 14px;
+  background: linear-gradient(0deg, #dbe7e7, #eaf3f3);
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  margin-top: auto;
+}
+html[data-theme="oscuro"] footer nav,
+html[data-theme="sistema"] footer nav{
+  background: linear-gradient(0deg, #0b2d2d, #0e3b3b);
+}
+
+footer button{
+  background: var(--card);
+  border: 1px solid var(--border);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+  cursor: pointer;
+}
+
+/* --------- Vista simplificada (html[data-simplified="1"]) --------- */
+html[data-simplified="1"] .header p{ display:none; }
+html[data-simplified="1"] .list a{ padding: 12px; }
+html[data-simplified="1"] .block{ padding: 12px; }
